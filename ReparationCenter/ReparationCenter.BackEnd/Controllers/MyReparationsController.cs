@@ -55,7 +55,6 @@ namespace ReparationCenter.BackEnd.Controllers
             
             repair.RepairStatus = myReparation.RepairStatus;
             repair.RepairValue = myReparation.RepairValue;
-            repair.DamageDiagnosis = myReparation.DamageDiagnosis;
             repair.DateFinished = myReparation.DateFinished;
             repair.TechnicalComents = myReparation.TechnicalComents;
             
