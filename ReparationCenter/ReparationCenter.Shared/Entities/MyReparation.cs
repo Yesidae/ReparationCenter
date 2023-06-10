@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ReparationCenter.Shared.Entities
+{
+    public class MyReparation
+    {
+        public string DeviceType { get; set; } = null!; // tipo de equipo
+
+        public string Brand { get; set; } = null!; // Marca
+
+        public string OwnerName { get; set; } = null!; //Nombre den propietario
+
+        public string OwnerLastName { get; set; } = null!; //Nombre den propietario
+
+        public int OwnerPhone { get; set; } //Telefono del propietario
+
+        public string Email { get; set; } = null!; //Correo electronico
+
+        [Required]
+        public string DamageDiagnosis { get; set; } = null!; //Diagnostico del daño
+
+        [Required]
+        public string TechnicalComents { get; set; } = null!; //Comentarios del tecnico
+
+        public string RepairStatus { get; set; } = null!; //Comentarios del tecnico
+
+        [Required]
+        public decimal RepairValue { get; set; } //Valor de la reparación
+
+        public DateTime DateStarted { get; set; } //Fecha de ingreso
+
+        public DateTime DateFinished { get; set; } //Fecha de salida
+    }
+}
