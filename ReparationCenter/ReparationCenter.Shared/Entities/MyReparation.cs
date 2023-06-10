@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ReparationCenter.Shared.Entities
 {
@@ -19,7 +14,7 @@ namespace ReparationCenter.Shared.Entities
 
         public int OwnerPhone { get; set; } //Telefono del propietario
 
-        public string Email { get; set; } = null!; //Correo electronico
+        public string Email { get; set; } = null!; //Correo electronico     
 
         [Required]
         public string DamageDiagnosis { get; set; } = null!; //Diagnostico del daño
@@ -31,6 +26,8 @@ namespace ReparationCenter.Shared.Entities
 
         [Required]
         public decimal RepairValue { get; set; } //Valor de la reparación
+
+        public int Id { get; set; } 
 
         public DateTime DateStarted { get; set; } //Fecha de ingreso
 
