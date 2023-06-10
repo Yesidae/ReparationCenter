@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReparationCenter.Shared", "ReparationCenter.Shared\ReparationCenter.Shared.csproj", "{69466B07-5193-4143-BB2A-4DF488C50B3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReparationCenter.Shared", "ReparationCenter.Shared\ReparationCenter.Shared.csproj", "{69466B07-5193-4143-BB2A-4DF488C50B3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReparationCenter.BackEnd", "ReparationCenter.BackEnd\ReparationCenter.BackEnd.csproj", "{81D70472-202F-46F9-AC72-B9567406A604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReparationCenter.BackEnd", "ReparationCenter.BackEnd\ReparationCenter.BackEnd.csproj", "{81D70472-202F-46F9-AC72-B9567406A604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReparationCenter.FrontEnd", "ReparationCenter.FrontEnd\ReparationCenter.FrontEnd.csproj", "{2A98FBF4-8D8C-4D1E-A4C5-8837B59770DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReparationCenter.FrontEnd", "ReparationCenter.FrontEnd\ReparationCenter.FrontEnd.csproj", "{2A98FBF4-8D8C-4D1E-A4C5-8837B59770DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

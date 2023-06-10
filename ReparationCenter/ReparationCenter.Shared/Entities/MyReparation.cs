@@ -4,6 +4,8 @@ namespace ReparationCenter.Shared.Entities
 {
     public class MyReparation
     {
+        public int Id { get; set; } // id
+
         public string DeviceType { get; set; } = null!; // tipo de equipo
 
         public string Brand { get; set; } = null!; // Marca
@@ -26,8 +28,6 @@ namespace ReparationCenter.Shared.Entities
 
         [Required]
         public decimal RepairValue { get; set; } //Valor de la reparación
-
-        public int Id { get; set; } 
 
         public DateTime DateStarted { get; set; } //Fecha de ingreso
 

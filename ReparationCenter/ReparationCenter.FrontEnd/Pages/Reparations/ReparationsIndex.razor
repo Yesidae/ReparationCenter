@@ -1,0 +1,70 @@
+﻿@page "/reparations"
+@inject IRepository repository
+
+
+<h3>Reparations</h3>
+
+@if (Reparations == null)
+{
+    <p>Cargando...</p>
+}
+else
+{
+    <a href="/reparations/create" class="btn btn-primary">New Reparation</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>DeviceType</th>
+                <th>Brand</th>
+                <th>OwnerName</th>
+                <th>OwnerLastName</th>
+                <th>OwnerPhone</th>
+                <th>Email</th>
+                <th>DamageDiagnosis</th>
+                <th>TechnicalComents</th>
+                <th>RepairStatus</th>
+                <th>RepairValue</th>
+                <th>DateStarted</th>
+                <th>DateFinished</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reparation in Reparations)
+            {
+                <tr>
+                    <td>@reparation.DeviceType</td>
+                    <td>@reparation.Brand</td>
+                    <td>@reparation.OwnerName</td>
+                    <td>@reparation.OwnerLastName</td>
+                    <td>@reparation.OwnerPhone</td>
+                    <td>@reparation.Email</td>
+                    <td>@reparation.DamageDiagnosis</td>
+                    <td>@reparation.TechnicalComents</td>
+                    <td>@reparation.RepairStatus</td>
+                    <td>@reparation.RepairValue</td>
+                    <td>@reparation.DateStarted</td>
+                    <td>@reparation.DateFinished</td>
+                    <td>
+                        <a href="/reparations/edit/@reparation.Id" class="btn btn-warning">Edit</a>
+                        <button class="btn btn-info">Complete</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    public List<MyReparation>? Reparations { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await repository.GetAsync<List<MyReparation>>("api/MyReparations");
+        if (response.IsSuccess)
+        {
+            Reparations = response.Result;
+        }
+    }
+}
