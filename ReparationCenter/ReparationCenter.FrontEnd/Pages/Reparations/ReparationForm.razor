@@ -91,17 +91,8 @@
         <div class="mb-3">
             <label>Repair Status:</label>
             <div>
-            <form action="#" onClick={(e) => { captureValue(e)}}>
-                <label for="lang">Lenguaje</label>
-                <select name="lenguajes" id="lang">
-                    <option value="1">Nuevo</option>
-                    <option value="2">En proceso</option>
-                    <option value="3">Reparado</option>
-                    <option value="4">Entregado</option>
-                </select>
-            </form>
-                @*<InputText class="form-control" @bind-Value="@MyReparation.RepairStatus" />
-                <ValidationMessage For="@(() => MyReparation.RepairStatus)" />*@
+                <InputText class="form-control" @bind-Value="@MyReparation.RepairStatus" />
+                <ValidationMessage For="@(() => MyReparation.RepairStatus)" />
             </div>
         </div>
 
