@@ -1,7 +1,39 @@
 ﻿@page "/reparations/create"
+@inject IRepository repository
+@inject SweetAlertService sweetAlertService
+@inject NavigationManager navigationManager
 
 <h3>New Reparation</h3>
 
+<ReparationForm MyReparation="myReparation" OnValidSubmit="CreateAsync" ReturnAction="Return"/>
+
 @code {
+    private MyReparation myReparation = new() {DateStarted = DateTime.Today, DateFinished = DateTime.Today };
+
+    private async Task CreateAsync()
+    {
+        var responseHttp = await repository.PostAsync("/api/MyReparations/", myReparation);
+        if (!responseHttp.IsSuccess)
+        {
+            await sweetAlertService.FireAsync("Error", responseHttp.Message, SweetAlertIcon.Error);
+            return;
+        }
+
+        Return();
+
+        var toast = sweetAlertService.Mixin(new SweetAlertOptions
+        {
+            Toast = true,
+            Position = SweetAlertPosition.BottomEnd,
+            ShowCloseButton = true,
+            Timer = 3000
+        });
+        await toast.FireAsync(icon: SweetAlertIcon.Info, message: "Tasks created successfully");
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("/reparations");
+    }
 
 }

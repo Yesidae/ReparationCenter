@@ -1,0 +1,126 @@
+﻿<EditForm Model="MyReparation" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+        <div class="mb-3">
+            <label>Device Tipe:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@MyReparation.DeviceType"/>
+                <ValidationMessage For="@(() => MyReparation.DeviceType)"/>
+            </div>
+        </div>
+    
+        <div class="mb-3">
+            <label>Brand:</label>
+            <div>
+                    <InputText class="form-control" @bind-Value="@MyReparation.Brand" />
+                    <ValidationMessage For="@(() => MyReparation.Brand)" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Owner Name:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@MyReparation.OwnerName" />
+                <ValidationMessage For="@(() => MyReparation.OwnerName)" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Owner Last Name:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@MyReparation.OwnerLastName" />
+                <ValidationMessage For="@(() => MyReparation.OwnerLastName)" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Owner Phone:</label>
+            <div>
+                <InputNumber class="form-control" @bind-Value="@MyReparation.OwnerPhone" />
+                <ValidationMessage For="@(() => MyReparation.OwnerPhone)" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Email:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@MyReparation.Email" />
+                <ValidationMessage For="@(() => MyReparation.Email)" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>DamageDiagnosis:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@MyReparation.DamageDiagnosis" />
+                <ValidationMessage For="@(() => MyReparation.DamageDiagnosis)" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>TechnicalComents:</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@MyReparation.TechnicalComents" />
+                <ValidationMessage For="@(() => MyReparation.TechnicalComents)" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Date Started:</label>
+            <div>
+                <InputDate class="form-control" @bind-Value="@MyReparation.DateStarted" />
+                <ValidationMessage For="@(() => MyReparation.DateStarted)" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Date Finished:</label>
+            <div>
+                <InputDate class="form-control" @bind-Value="@MyReparation.DateFinished" />
+                <ValidationMessage For="@(() => MyReparation.DateFinished)" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label>Repair Value:</label>
+            <div>
+                <InputNumber class="form-control" @bind-Value="@MyReparation.RepairValue" />
+                <ValidationMessage For="@(() => MyReparation.RepairValue)" />
+            </div>
+        </div>  
+            
+        <div class="mb-3">
+            <label>Repair Status:</label>
+            <div>
+            <form action="#" onClick={(e) => { captureValue(e)}}>
+                <label for="lang">Lenguaje</label>
+                <select name="lenguajes" id="lang">
+                    <option value="1">Nuevo</option>
+                    <option value="2">En proceso</option>
+                    <option value="3">Reparado</option>
+                    <option value="4">Entregado</option>
+                </select>
+            </form>
+                @*<InputText class="form-control" @bind-Value="@MyReparation.RepairStatus" />
+                <ValidationMessage For="@(() => MyReparation.RepairStatus)" />*@
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-success" @onclick="ReturnAction">Return</button>
+
+</EditForm>
+
+
+@code {
+    [EditorRequired]
+    [Parameter]
+    public MyReparation MyReparation { get; set; } = null!;
+
+    [EditorRequired]
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+
+    [EditorRequired]
+    [Parameter]
+    public EventCallback ReturnAction { get; set; }
+}

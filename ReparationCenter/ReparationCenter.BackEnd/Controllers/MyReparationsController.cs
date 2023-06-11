@@ -20,7 +20,7 @@ namespace ReparationCenter.BackEnd.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_context.MyReparations.ToList());
+            return Ok(_context.MyReparations.OrderBy(t => t.DateStarted).ToList());
         }
 
         [HttpGet("{id:int}")]
@@ -52,12 +52,24 @@ namespace ReparationCenter.BackEnd.Controllers
             {
                 return NotFound();
             }
-            
-            repair.RepairStatus = myReparation.RepairStatus;
-            repair.RepairValue = myReparation.RepairValue;
-            repair.DateFinished = myReparation.DateFinished;
+
+            repair.DeviceType = myReparation.DeviceType;
+            repair.Brand = myReparation.Brand;
+            repair.OwnerName = myReparation.OwnerName;
+            repair.OwnerLastName = myReparation.OwnerLastName;
+            repair.OwnerPhone = myReparation.OwnerPhone;
+            repair.Email = myReparation.Email;
+            repair.DamageDiagnosis = myReparation.DamageDiagnosis;
             repair.TechnicalComents = myReparation.TechnicalComents;
+            repair.DateStarted = myReparation.DateStarted;
+            repair.DateFinished = myReparation.DateFinished;
+            repair.RepairValue = myReparation.RepairValue;
+            repair.RepairStatus = myReparation.RepairStatus;
+
             
+
+
+
             _context.Update(repair);
             _context.SaveChanges();
             return Ok(repair);

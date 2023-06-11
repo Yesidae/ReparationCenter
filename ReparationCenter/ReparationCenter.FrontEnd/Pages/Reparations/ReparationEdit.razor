@@ -1,10 +1,64 @@
-﻿@page "/reparations/edit/{Id}"
+﻿@page "/reparations/edit/{Id:int}"
+@inject IRepository repository
+@inject SweetAlertService sweetAlertService
+@inject NavigationManager navigationManager
+
 
 <h3>Edit Reparation</h3>
 
+@if (myReparation is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <ReparationForm MyReparation="myReparation" OnValidSubmit="SaveAsync" ReturnAction="Return" />
+}
+
+
 @code {
+    private MyReparation? myReparation;
+
     [Parameter]
     public int Id { get; set; }
 
+    protected async override Task OnInitializedAsync()
+    {
+        var responseHttp = await repository.GetAsync<MyReparation>($"api/MyReparations/{Id}");
+
+        if (!responseHttp.IsSuccess)
+        {
+            await sweetAlertService.FireAsync("Error", responseHttp.Message, SweetAlertIcon.Error);
+            return;
+        }
+        myReparation = responseHttp.Result;
+
+    }
+
+    private async Task SaveAsync()
+    {
+        var responseHttp = await repository.PutAsync("/api/MyReparations/", myReparation);
+        if (!responseHttp.IsSuccess)
+        {
+            await sweetAlertService.FireAsync("Error", responseHttp.Message, SweetAlertIcon.Error);
+            return;
+        }
+
+        Return();
+
+        var toast = sweetAlertService.Mixin(new SweetAlertOptions
+        {
+            Toast = true,
+            Position = SweetAlertPosition.BottomEnd,
+            ShowCloseButton = true,
+            Timer = 3000
+        });
+        await toast.FireAsync(icon: SweetAlertIcon.Info, message: "Tasks edited successfully");
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("/reparations");
+    }
 
 }
